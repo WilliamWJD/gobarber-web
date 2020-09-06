@@ -23,6 +23,10 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
 
   const { fieldName, defaultValue, error, registerField } = useField(name);
 
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
   const handleInputBlud = useCallback(() => {
     setIsFocused(false);
 
@@ -45,12 +49,13 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     <Container isFocused={isFocused} isField={isField}>
       {Icon && <Icon size={20} />}
       <input
-        onFocus={() => setIsFocused(true)}
+        onFocus={handleInputFocus}
         onBlur={handleInputBlud}
         defaultValue={defaultValue}
         {...rest}
         ref={inputRef}
       />
+      {error}
     </Container>
   );
 };
