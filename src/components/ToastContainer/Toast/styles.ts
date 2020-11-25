@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
 
-interface ToastProps {
+interface ContainerProps {
   type?: 'success' | 'error' | 'info';
-  hasDescription: number;
+  hasdescription: number;
 }
 
 const toastTypeVariations = {
@@ -21,7 +21,7 @@ const toastTypeVariations = {
   `,
 };
 
-export const Container = styled(animated.div)<ToastProps>`
+export const Container = styled(animated.div)<ContainerProps>`
   width: 360px;
 
   position: relative;
@@ -63,7 +63,7 @@ export const Container = styled(animated.div)<ToastProps>`
   }
 
   ${props =>
-    !props.hasDescription &&
+    !props.hasdescription &&
     css`
       align-items: center;
 
